@@ -1,0 +1,37 @@
+AllCops:
+  NewCops: enable
+Layout/HashAlignment:
+  Exclude:
+    - 'db/schema.rb'
+Layout/LineLength:
+  Exclude:
+    - 'db/schema.rb'
+Layout/TrailingWhitespace:
+  Exclude:
+    - 'db/schema.rb'
+Metrics/AbcSize:
+  Enabled: false
+Metrics/ClassLength:
+  Exclude:
+    - 'db/schema.rb'
+Metrics/BlockLength:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/PerceivedComplexity:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+Style/StringLiterals:
+  Exclude:
+    - 'db/schema.rb'
+Style/WordArray:
+  Exclude:
+    - 'db/schema.rb'
