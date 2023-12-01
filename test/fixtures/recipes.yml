@@ -4,8 +4,11 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  title: Delicious Dish
+  cook_time: 30
+  prep_time: 15
+  ratings: 4.5
+  image_url: 'https://example.com/delicious-dish.jpg'
+  author: one
+  category: one
