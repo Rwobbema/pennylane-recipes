@@ -1,24 +1,57 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Pennylane recipe app launch instructions
 
-Things you may want to cover:
+## Introduction
 
-* Ruby version
+This app helps users find the most relevant recipes that they can prepare with the ingredients that they have at home.
 
-* System dependencies
+## Prerequisites
 
-* Configuration
+Before you start, make sure you have the following installed on your system:
 
-* Database creation
+- [Ruby](https://www.ruby-lang.org/en/documentation/installation/)
+- [Ruby on Rails](https://guides.rubyonrails.org/getting_started.html#installing-rails)
+- [Bundler](https://bundler.io/)
 
-* Database initialization
+## Getting Started
 
-* How to run the test suite
+Follow the steps below to set up and run the application on your local machine.
 
-* Services (job queues, cache servers, search engines, etc.)
+### Step 1: Bundle Install
 
-* Deployment instructions
+Run the following command to install all the required gems and dependencies:
 
-* ...
+```bash
+bundle install
+```
+
+### Step 2: Database Migration
+
+Run the following command to create the database tables based on the application's data models:
+
+```bash
+rails db:migrate
+```
+
+### Step 3: Seed Database
+
+Run the following command to populate the database with initial data:
+
+```bash
+rails db:seed
+```
+
+Note: This step may take around 2 minutes to complete. The seed task fills the database with predefined data, making it easier to test and explore the application. Please be patient during this process.
+
+### Step 4: Start the Server
+
+Finally, start the Rails server with the following command:
+
+```bash
+rails s
+```
+
+This command launches the application, and you can access it by navigating to http://localhost:3000 in your web browser.
+
+
