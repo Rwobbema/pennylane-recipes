@@ -43,3 +43,4 @@ dump.rdb
 *.log
 log/development.log
 tmp/cache/bootsnap/load-path-cache
+tmp/cache/bootsnap/compile-cache-iseq/0a/2f85cd4a7bac48

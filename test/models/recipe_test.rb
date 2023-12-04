@@ -46,4 +46,18 @@ class RecipeTest < ActiveSupport::TestCase
     @recipe.image_url = '  ' # Invalid image URL with only spaces
     assert_not @recipe.valid?
   end
+
+  test 'find_relevant_ingredients should return relevant recipes' do
+    ingredient1 = ingredients(:one)
+    ingredient2 = ingredients(:two)
+    relevant_recipes = Recipe.find_relevant_ingredients([ingredient1.name, ingredient2.name])
+    assert_not_nil relevant_recipes
+    assert_equal 1, relevant_recipes.length
+  end
+
+  test 'find_relevant_ingredients should result in nothing if no relevant recipes are passed' do
+    relevant_recipes = Recipe.find_relevant_ingredients(['invalid ingredient'])
+    assert_not_nil relevant_recipes
+    assert_equal 0, relevant_recipes.length
+  end
 end

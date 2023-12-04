@@ -48,7 +48,7 @@ recipes_list = json_recipes.map do |recipe|
     cook_time: recipe['cook_time'],
     prep_time: recipe['prep_time'],
     ratings: recipe['ratings'],
-    image_url: recipe['image_url'],
+    image_url: recipe['image'],
     category_id:,
     author_id:
   }

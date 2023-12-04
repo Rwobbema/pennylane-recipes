@@ -1,0 +1,27 @@
+.container
+  .row
+    .col-md-12
+      = link_to 'Back', recipes_path
+      = image_tag @recipe.image_url, class: 'card-img-top', alt: @recipe.title, style: 'height: 300px; object-fit: cover;'
+      .badge.badge-primary.text-wrap
+        = @recipe.category.name
+      %h1.display-4= @recipe.title
+      %h6.text-muted
+        Author: #{@recipe.author.name}
+      %br/
+      .badge.text-wrap
+        %strong Cook time
+        %br/
+        = "#{@recipe.cook_time} minutes"
+      .badge.text-wrap
+        %strong Prep time
+        %br/
+        = "#{@recipe.prep_time} minutes"
+      %hr.my-4/
+      %h2 Instructions
+      %p.lead The instructions are currently not available. We will update this recipe soon.
+      %h2 Ingredients
+      %ul.list-group
+        - @recipe.ingredients.each do |ingredient|
+          %li.list-group-item.d-flex.justify-content-between.align-items-center
+            = ingredient.name

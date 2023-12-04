@@ -1,0 +1,46 @@
+.container.mt-4
+  .row
+    .col-md-12
+      %h1 Search for recipes
+      -# search form
+      = form_tag recipes_path, method: :get do
+        .form-group
+          = text_field_tag :search, params[:search], class: 'form-control', placeholder: 'Search "Tomato, pasta, etc."'
+        = submit_tag 'Search', class: 'btn btn-primary'
+
+.container.mt-4
+  .row
+    .col-md-12
+      %h2 Recipes
+      - if params[:search].present?
+        %p= "Showing recipes with #{params[:search].split(',').to_sentence}"
+  - if @recipes.any?
+    .row.row-cols-3.row-cols-md-4
+      - @recipes.each do |recipe|
+        .col.mb-4
+          .card
+            %div{ style: 'height: 150px; object-fit: cover; overflow: hidden;' }
+              = image_tag recipe.image_url, class: 'card-img-top', alt: recipe.title
+            .card-body
+              %small= recipe.category.name
+              %h3.card-title= recipe.title
+              %hr.my-4/
+              .card-text
+                %p
+                  %strong Author:
+                  = recipe.author.name
+                %p
+                  %strong Cook time:
+                  = "#{recipe.cook_time} min"
+                %p
+                  %strong Prep time:
+                  = "#{recipe.prep_time} min"
+              - if params[:search].present?
+                - matching_ingredients(params[:search], recipe).each do |match|
+                  .badge.badge-light.text-wrap.badge-pill
+                    = match
+            = link_to 'View', recipe_path(recipe), class: 'btn btn-primary'
+  - else
+    .row
+      .col-md-12
+        %p No recipes found
