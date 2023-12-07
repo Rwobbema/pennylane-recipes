@@ -15,4 +15,17 @@ class Recipe < ApplicationRecord
       .group('recipes.id')
       .order(Arel.sql('COUNT(DISTINCT ingredients.name) DESC'))
   end
+
+  # Not as fast as the other but it gives more relevant results.
+  def self.find_relevant_ingredients_and_order(ingredient_names, limit)
+    ingredient_names = ingredient_names.map { |val| "%#{val}%" }
+    recipes = joins(:ingredients).where('ingredients.name LIKE ANY (array[?])', ingredient_names)
+
+    recipe_ids = ingredient_names.map do |name|
+      recipes.where('ingredients.name LIKE ?', name).pluck(:id).uniq
+    end
+
+    ordered_recipe_ids = recipe_ids.flatten.tally.sort_by(&:last).reverse.map(&:first).first(limit)
+    where(id: ordered_recipe_ids).in_order_of(:id, ordered_recipe_ids)
+  end
 end
